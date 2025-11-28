@@ -6,7 +6,18 @@ const port = 3000;
 app.set('view engine', 'ejs')
 app.set('views',"./views")
 
+app.use(express.json());
+app.use(express.urlencoded());
+
+require("../db/db")(app);
 require("../rotas/home")(app);
+require("../rotas/getnoticias")(app);
+require("../rotas/getidnoticias")(app);
+require("../rotas/gettiponoticias")(app);
+require("../rotas/putnoticias")(app);
+require("../rotas/postnoticias")(app);
+require("../rotas/delnoticias")(app);
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
